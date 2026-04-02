@@ -88,8 +88,8 @@ finance-dashboard/
 
 ### 4. Open in browser
 ```
-Frontend:
-Backend:
+Frontend:https://finance-iq-mu.vercel.app/
+Backend:https://financeiq-5iem.onrender.com
 ```
 
 ---
