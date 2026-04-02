@@ -3,8 +3,7 @@ const Budget = require('../models/Budget');
 const Investment = require('../models/Investment');
 const NetWorth = require('../models/NetWorth');
 
-// @desc  Full dashboard summary
-// @route GET /api/dashboard
+
 const getDashboard = async (req, res) => {
   try {
     const now = new Date();
@@ -161,8 +160,7 @@ const getFinancialScore = async (req, res) => {
   }
 };
 
-// @desc  Smart insights
-// @route GET /api/insights
+
 const getInsights = async (req, res) => {
   try {
     const now = new Date();
@@ -231,8 +229,7 @@ const getInsights = async (req, res) => {
   }
 };
 
-// @desc  Update net worth
-// @route POST /api/networth
+
 const updateNetWorth = async (req, res) => {
   try {
     const netWorth = await NetWorth.create({ userId: req.user._id, ...req.body });
@@ -242,8 +239,7 @@ const updateNetWorth = async (req, res) => {
   }
 };
 
-// @desc  Get net worth history
-// @route GET /api/networth
+
 const getNetWorthHistory = async (req, res) => {
   try {
     const investments = await Investment.find({ userId: req.user._id });
