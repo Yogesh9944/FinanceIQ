@@ -2,10 +2,6 @@
 
 > A full-stack MERN application to track expenses, budgets, investments, and net worth — with an AI-style Financial Health Score.
 
-![Tech Stack](https://img.shields.io/badge/Stack-MERN-blue) ![Auth](https://img.shields.io/badge/Auth-JWT-green) ![DB](https://img.shields.io/badge/DB-MongoDB%20Atlas-brightgreen)
-
----
-
 ## 🚀 Live Features
 
 | Module | What it does |
@@ -90,34 +86,10 @@ finance-dashboard/
 
 ---
 
-## ⚙️ Setup & Installation
-
-### 1. Clone the repo
-```bash
-git clone https://github.com/yourusername/finance-dashboard.git
-cd finance-dashboard
-```
-
-### 2. Backend setup
-```bash
-cd backend
-npm install
-cp .env.example .env
-# Fill in your MongoDB Atlas URI and JWT secret in .env
-npm run dev
-```
-
-### 3. Frontend setup
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
 ### 4. Open in browser
 ```
-Frontend: http://localhost:5173
-Backend:  http://localhost:5000/api/health
+Frontend:
+Backend:
 ```
 
 ---
@@ -164,38 +136,6 @@ Backend:  http://localhost:5000/api/health
 | POST | `/api/dashboard/networth` | Save snapshot |
 | GET | `/api/dashboard/networth` | Net worth history |
 
----
-
-## 🧠 Financial Health Score — How It Works
-
-```
-Score = Savings (30) + Expense Control (25) + Debt Ratio (20) + Investment Rate (25)
-```
-
-| Factor | Weight | Formula |
-|--------|--------|---------|
-| Savings Rate | 30 pts | savingsRate / 30 × 30 (capped at 30%) |
-| Expense Control | 25 pts | 25 if expenses < income |
-| Debt Ratio | 20 pts | 20 if debt < 30% of assets, 10 if < 60% |
-| Investment Rate | 25 pts | investedAmt / (income×12) × 100 |
-
----
-
-## 🎨 Design
-
-- **Theme**: Deep navy + electric blue + cyan accents
-- **Typography**: Space Grotesk (headings), DM Sans (body)
-- **Animations**: Staggered entry, glow pulses, smooth transitions
-- **Charts**: Recharts — Bar, Pie, Area, Line
-- **Glass cards** with glow-on-hover effects
-
----
-
-## 📝 Interview Talking Points
-
-> "I built a full-stack personal finance dashboard using the MERN stack where users can track expenses, set budgets per category, monitor investments across asset classes, and view their net worth over time. The standout feature is a **Financial Health Score** (0–100) computed server-side from savings rate, expense control, debt ratio, and investment behavior — with personalized feedback and smart insights that detect month-over-month spending spikes automatically."
-
----
 
 ## 🔐 Environment Variables
 
@@ -211,8 +151,8 @@ NODE_ENV=development
 
 ## 📦 Deployment
 
-- **Backend**: Railway / Render / Heroku
-- **Frontend**: Vercel / Netlify
-- **Database**: MongoDB Atlas (free M0 tier)
+- **Backend**:  Render
+- **Frontend**: Vercel 
+- **Database**: MongoDB Atlas 
 
-Set `CLIENT_URL` in backend .env to your Vercel frontend URL for CORS.
+
