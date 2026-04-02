@@ -1,8 +1,6 @@
 const Budget = require('../models/Budget');
 const Transaction = require('../models/Transaction');
 
-// @desc  Set/update budget
-// @route POST /api/budgets
 const setBudget = async (req, res) => {
   try {
     const { category, limit, month, year } = req.body;
@@ -21,8 +19,7 @@ const setBudget = async (req, res) => {
   }
 };
 
-// @desc  Get budgets with usage
-// @route GET /api/budgets
+
 const getBudgets = async (req, res) => {
   try {
     const now = new Date();
@@ -61,8 +58,7 @@ const getBudgets = async (req, res) => {
   }
 };
 
-// @desc  Delete budget
-// @route DELETE /api/budgets/:id
+
 const deleteBudget = async (req, res) => {
   try {
     await Budget.findOneAndDelete({ _id: req.params.id, userId: req.user._id });
