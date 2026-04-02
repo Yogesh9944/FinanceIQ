@@ -22,8 +22,9 @@ app.use('/api/budgets', require('./routes/budgets'));
 app.use('/api/investments', require('./routes/investments'));
 app.use('/api/dashboard', require('./routes/dashboard'));
 
-// Health check
-app.get('/api/health', (req, res) => res.json({ status: 'ok', message: 'FinanceIQ API running 🚀' }));
+app.get('/', (req, res) => {
+  res.send('🚀 FinanceIQ Backend is Live');
+});
 
 // 404 handler
 app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
