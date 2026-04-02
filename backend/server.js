@@ -5,21 +5,34 @@ const connectDB = require('./config/db');
 
 const app = express();
 
-// CORS configuration
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://finance-iq-mu.vercel.app" // 🔁 replace if your URL is different
+];
+
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: function (origin, callback) {
+    // allow requests with no origin (like Postman)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 }));
 
-// Parse JSON
 app.use(express.json());
 
-// Root route (for Render testing)
 app.get('/', (req, res) => {
   res.send('FinanceIQ Backend is Live 🚀');
 });
 
-// Health check route
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'ok',
@@ -27,19 +40,17 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// API Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/transactions', require('./routes/transactions'));
 app.use('/api/budgets', require('./routes/budgets'));
 app.use('/api/investments', require('./routes/investments'));
 app.use('/api/dashboard', require('./routes/dashboard'));
 
-// 404 handler
 app.use((req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
-// Error handler
+
 app.use((err, req, res, next) => {
   console.error('❌ ERROR:', err.stack);
 
@@ -48,7 +59,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Server Start ONLY after DB connects (IMPORTANT)
 
 const PORT = process.env.PORT || 5000;
 
