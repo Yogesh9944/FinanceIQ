@@ -1,7 +1,6 @@
 const Transaction = require('../models/Transaction');
 
-// @desc  Add transaction
-// @route POST /api/transactions
+
 const addTransaction = async (req, res) => {
   try {
     const { title, amount, type, category, date, note, isRecurring, recurringFrequency } = req.body;
@@ -17,8 +16,7 @@ const addTransaction = async (req, res) => {
   }
 };
 
-// @desc  Get all transactions (with filters)
-// @route GET /api/transactions
+
 const getTransactions = async (req, res) => {
   try {
     const { type, category, month, year, limit = 50 } = req.query;
@@ -39,8 +37,7 @@ const getTransactions = async (req, res) => {
   }
 };
 
-// @desc  Delete transaction
-// @route DELETE /api/transactions/:id
+
 const deleteTransaction = async (req, res) => {
   try {
     const transaction = await Transaction.findOne({ _id: req.params.id, userId: req.user._id });
@@ -52,8 +49,7 @@ const deleteTransaction = async (req, res) => {
   }
 };
 
-// @desc  Update transaction
-// @route PUT /api/transactions/:id
+
 const updateTransaction = async (req, res) => {
   try {
     const transaction = await Transaction.findOneAndUpdate(
@@ -68,8 +64,7 @@ const updateTransaction = async (req, res) => {
   }
 };
 
-// @desc  Monthly breakdown for charts
-// @route GET /api/transactions/monthly-breakdown
+
 const getMonthlyBreakdown = async (req, res) => {
   try {
     const now = new Date();
@@ -100,8 +95,7 @@ const getMonthlyBreakdown = async (req, res) => {
   }
 };
 
-// @desc  Category breakdown pie chart
-// @route GET /api/transactions/category-breakdown
+
 const getCategoryBreakdown = async (req, res) => {
   try {
     const { month, year } = req.query;
