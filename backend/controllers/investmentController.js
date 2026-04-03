@@ -1,7 +1,6 @@
 const Investment = require('../models/Investment');
 
-// @desc  Add investment
-// @route POST /api/investments
+
 const addInvestment = async (req, res) => {
   try {
     const investment = await Investment.create({ userId: req.user._id, ...req.body });
@@ -11,8 +10,7 @@ const addInvestment = async (req, res) => {
   }
 };
 
-// @desc  Get investments
-// @route GET /api/investments
+
 const getInvestments = async (req, res) => {
   try {
     const investments = await Investment.find({ userId: req.user._id }).sort({ createdAt: -1 });
@@ -30,8 +28,7 @@ const getInvestments = async (req, res) => {
   }
 };
 
-// @desc  Update investment (e.g. update current value)
-// @route PUT /api/investments/:id
+
 const updateInvestment = async (req, res) => {
   try {
     const investment = await Investment.findOneAndUpdate(
@@ -46,8 +43,7 @@ const updateInvestment = async (req, res) => {
   }
 };
 
-// @desc  Delete investment
-// @route DELETE /api/investments/:id
+
 const deleteInvestment = async (req, res) => {
   try {
     await Investment.findOneAndDelete({ _id: req.params.id, userId: req.user._id });
