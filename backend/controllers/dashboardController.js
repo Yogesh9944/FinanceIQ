@@ -77,8 +77,7 @@ const getDashboard = async (req, res) => {
   }
 };
 
-// @desc  Financial Health Score
-// @route GET /api/financial-score
+
 const getFinancialScore = async (req, res) => {
   try {
     const now = new Date();
